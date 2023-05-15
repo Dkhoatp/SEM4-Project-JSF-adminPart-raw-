@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+        <ui:composition template="../../template/adminLayout.xhtml" >
+            <ui:define name="content">
+                Create Product
+                <h:outputLink value="#{request.contextPath}/faces/admin/product/manage.xhtml">manage</h:outputLink>
+                <h:form prependId="false" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nameProduct">Name Product</label>
+                        <h:inputText id="nameProduct" class="form-control" value="#{brandMB.brand.nameBrand}" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel styleClass="col-lg-3  col-form-label col-form-label-lg fa-solid"  style="margin-top: 10px;"  value="Description"/>
+                        <div class="col-lg-9">
+                            <h:inputFile id="files" style="display: none;" value="#{productMB.images}" a:multiple="true" />
+                            <label for="files" id="result"><img src="https://res.cloudinary.com/dkcfd8eib/image/upload/v1681977616/Java/InstrumentStore/Product/defaultimageproduct_sj4ham.svg"  height="150"/></label> 
+                        </div>
+                    </div>
+                    <h:commandLink class="btn btn-primary" action="#{productMB.createProduct()}" value="Create" ></h:commandLink>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="../../template/adminLayout.xhtml" >
+            <ui:define name="content">
+                Deleted Brand
+                <h:outputLink value="#{request.contextPath}/faces/admin/brand/manage.xhtml">manage</h:outputLink>
+                <h:dataTable value="#{brandMB.showRestoreBrand()}" var="brand" id="brandTable">
+                    <h:column>
+                        <f:facet name="header">Brand name</f:facet>
+                        <h:outputText value="#{brand.nameBrand}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Brand Image" />
+                        </f:facet>
+                        <h:graphicImage url="#{brand.images}" alt="Brand Image" height="100" width="100"/>
+                    </h:column>=
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Restore" />
+                        </f:facet>
+                        <h:form>
+                            <h:commandLink action="#{brandMB.restoreActiveBrand(brand)}">
+                                <!--<f:ajax execute="@form" render="brandTable"/>-->
+                                <!--<i class="fa fa-trash-o fa-3x"></i>-->
+                                Restore
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

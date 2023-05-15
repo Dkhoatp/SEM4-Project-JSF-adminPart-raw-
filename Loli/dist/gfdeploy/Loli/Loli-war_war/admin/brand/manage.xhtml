@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="../../template/adminLayout.xhtml" >
+            <ui:define name="content">
+                Manage Brand<br />
+                <h:outputLink value="#{request.contextPath}/faces/admin/adminHome.xhtml">Manage</h:outputLink><br />
+                <h:outputLink value="#{request.contextPath}/faces/admin/brand/create.xhtml">Create New</h:outputLink> 
+                <h:outputLink value="#{request.contextPath}/faces/admin/brand/recycleBin.xhtml">Recycle Bin</h:outputLink>
+                <h:dataTable value="#{brandMB.showBrand()}" var="brand" id="brandTable">
+                    <h:column>
+                        <f:facet name="header">Brand name</f:facet>
+                        <h:outputText value="#{brand.nameBrand}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Brand Image" />
+                        </f:facet>
+                        <h:graphicImage url="#{brand.images}" alt="Brand Image" height="100" width="100"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit" />
+                        </f:facet>
+                        <h:form> 
+                            <h:commandLink action="#{brandMB.editBrand(brand)}">
+                                <!--<i class="fa fa-pencil-square fa-3x"></i>-->
+                                Edit
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete" />
+                        </f:facet>
+                        <h:form>
+                            <h:commandLink action="#{brandMB.deleteActiveBrand(brand)}">
+                                <!--<f:ajax execute="@form" render="brandTable"/>-->
+                                <!--<i class="fa fa-trash-o fa-3x"></i>-->
+                                Delete
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+                <h:outputLink value="#{request.contextPath}/faces/admin/adminHome.xhtml">Manage</h:outputLink>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

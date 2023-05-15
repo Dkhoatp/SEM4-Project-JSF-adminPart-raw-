@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.j2ee.ejbjarproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2ee-ejbjarproject/3">
+            <name>Loli-ejb</name>
+            <minimum-ant-version>1.6.5</minimum-ant-version>
+            <included-library dirs="200">file.reference.cloudinary-core-1.33.0.jar</included-library>
+            <included-library dirs="200">file.reference.cloudinary-http44-1.33.0.jar</included-library>
+            <included-library dirs="200">file.reference.cloudinary-taglib-1.33.0.jar</included-library>
+            <included-library dirs="200">file.reference.commons-logging-1.2.jar</included-library>
+            <included-library dirs="200">file.reference.httpclient-4.5.6.jar</included-library>
+            <included-library dirs="200">file.reference.httpcore-4.4.10.jar</included-library>
+            <included-library dirs="200">file.reference.httpmime-4.5.14.jar</included-library>
+            <source-roots>
+                <root id="src.dir" name="Source Packages"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir" name="Test Packages"/>
+            </test-roots>
+        </data>
+    </configuration>
+</project>

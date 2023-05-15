@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html     
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="../../template/adminLayout.xhtml" >
+            <ui:define name="content">
+                Edit Category Type 
+                <h:outputLink value="#{request.contextPath}/faces/admin/type/manage.xhtml">manage</h:outputLink>
+                <h:dataTable value="#{bridgeMB.checkCategoryTypex()}" var="category" id="brandTable">
+                    <h:column>
+                        <f:facet name="header">Category name</f:facet>
+                        <h:outputText value="#{category.nameCategory}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Add" />
+                        </f:facet>
+                        <h:form> 
+                            <h:commandLink action="#{bridgeMB.addCategoryTypex(category)}">
+                                <!--<i class="fa fa-pencil-square fa-3x"></i>-->
+                                Add
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+                
+                <h:dataTable value="#{bridgeMB.showCategoryTypex()}" var="category" id="brandTable2">
+                      <h:column>
+                        <f:facet name="header">Category name</f:facet>
+                        <h:outputText value="#{category.nameCategory}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Remove" />
+                        </f:facet>
+                        <h:form> 
+                            <h:commandLink action="#{bridgeMB.removeCategoryTypex(category)}">
+                                <!--<i class="fa fa-pencil-square fa-3x"></i>-->
+                                Remove
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+

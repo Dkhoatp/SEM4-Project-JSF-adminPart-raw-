@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="../../template/adminLayout.xhtml" >
+            <ui:define name="content">
+                Create Product
+                <h:outputLink value="#{request.contextPath}/faces/admin/product/manage.xhtml">manage</h:outputLink>
+                <h:form prependId="false" enctype="multipart/form-data"> 
+                    <h:inputHidden value="#{productMB.product.idProduct}"/>
+                    <div class="form-group">
+                        <label for="Name">Name Product</label>
+                        <h:inputText id="Name" class="form-control" value="#{productMB.product.productName}" required="true"/>
+                        <h:message for="Name" style="color:red" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Quatity">Quatity</label>
+                        <h:inputText id="Quatity" class="form-control" value="#{productMB.product.quatity}" required="true">
+                            <f:validateDoubleRange minimum="1" maximum="999999999999"/>
+                        </h:inputText>
+                        <h:message for="Quatity" style="color:red" /> 
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Price</label>
+                        <h:inputText id="Price" class="form-control" value="#{productMB.product.price}" required="true">
+                            <f:validateDoubleRange minimum="1" maximum="999999999999"/>
+                        </h:inputText>
+                        <h:message for="Price" style="color:red" />
+                    </div>
+                    <h:commandButton value="Submit"  action="#{productMB.saveProduct()}"  />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template/adminLayout.xhtml" >
+
+            <ui:define name="title">
+                Edit Image Product
+            </ui:define>
+            <ui:define name="content">      
+                <h:outputLink value="#{request.contextPath}/faces/admin/product/manage.xhtml">manage</h:outputLink>
+                <h:form prependId="false" enctype="multipart/form-data">
+                    <div class="row" >
+                        <div class="col-12" style="background-color: #ffffff;padding: 50px;">
+                            <h3>Create Image Product </h3>
+                            <div class="form-group">
+                                <label for="file">Images:</label>
+                                <h:inputFile id="file" class="inputfile" style="display: none;" value="#{productMB.image}" required="true"/> <br/>
+                                <label for="file"> <img src="https://res.cloudinary.com/dkcfd8eib/image/upload/v1681977616/Java/InstrumentStore/Product/defaultimageproduct_sj4ham.svg" id="image" height="150" width="150" /> </label><br />
+                                <h:message for="file" style="color:red" />
+                            </div>
+
+                            <h:commandLink class="btn btn-primary" action="#{productMB.createImage(sessionScope.idProduct)}" value="Update" ></h:commandLink>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../template/adminLayout.xhtml">
+
+            <ui:define name="title">
+                Manage Image
+            </ui:define>
+            <ui:define name="content">
+                <div class="mb-3 mb-xl-0">
+                    <h:form>
+                        <h:commandLink class="btn btn-dark" action="/admin/product/createimage.xhtml"> <span>Add New</span> </h:commandLink>
+                    </h:form>
+                </div>
+
+                <h:dataTable value="#{productMB.showIamges(sessionScope.idProduct)}" var="imgs" styleClass="table table-hover js-basic-example dataTable table-custom spacing5 " id="imageTable">                      
+                    <h:column>        
+                        <f:facet name="header">
+                            <h:outputText value="Images Activity" />
+                        </f:facet>
+                        <i style="display:#{productMB.checkMainImage(imgs)};" class="fa fa-camera-retro fa-3x">s</i>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Images Product" />
+                        </f:facet>
+                        <h:graphicImage url="#{imgs.urlImage}" alt="Product Image" height="100" width="100"/>
+                    </h:column>     
+
+
+                    <h:column>
+                        <h:form>
+                            <f:facet name="header">
+                                <h:outputText value="Activity" />
+                            </f:facet>
+                            <h:commandLink action="#{productMB.setActivity(imgs)}">
+
+                                <i class="fa fa-gears fa-3x"></i>SetActivity
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <h:form>
+                            <f:facet name="header">
+                                <h:outputText value="Edit" />
+                            </f:facet>
+                            <h:commandLink action="#{productMB.eiditImage(imgs)}">
+                                <i class="fa fa-pencil fa-3x"></i>edit
+                            </h:commandLink>
+                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete" />
+                        </f:facet>
+                        <h:form >
+                            <h:commandLink action="#{productMB.deleteImage(imgs)}" disabled="#{productMB.checkDeleteImage(imgs)}">
+                                <i class="fa fa-trash-o fa-3x"></i>delete
+                            </h:commandLink>
+                        </h:form>       
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
